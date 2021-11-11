@@ -27,21 +27,21 @@ public class BinaryTreeController
         return binaryTreeService.addPlayer(player);
     }
 
-    @GetMapping("/preorder")
+    @GetMapping("/preorden")
     public @ResponseBody
     ResponseEntity<?> listPlayerPreOrden() throws BinaryTreeException
     {
         return binaryTreeService.listPlayers(1);
     }
 
-    @GetMapping("/inorder")
+    @GetMapping("/inorden")
     public @ResponseBody
     ResponseEntity<?> listPlayerInOrden() throws BinaryTreeException
     {
         return binaryTreeService.listPlayers(2);
     }
 
-    @GetMapping("/postorder")
+    @GetMapping("/postorden")
     public @ResponseBody
     ResponseEntity<?> listPlayerPostOrden() throws BinaryTreeException
     {
@@ -67,5 +67,11 @@ public class BinaryTreeController
     ResponseEntity<?> listLeaf() throws BinaryTreeException
     {
         return binaryTreeService.listGetLeafs();
+    }
+
+    @GetMapping("/createtournament/{totalPlayers}")
+    public @ResponseBody
+    ResponseEntity<?> createTournament(@PathVariable int totalPlayers) throws BinaryTreeException {
+        return binaryTreeService.createTournament(totalPlayers);
     }
 }

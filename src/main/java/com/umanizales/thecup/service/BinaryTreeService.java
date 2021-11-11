@@ -24,7 +24,7 @@ public class BinaryTreeService
     public ResponseEntity<ResponseBinaryTreeDto> listPlayers(int which) throws BinaryTreeException
     {
         return new ResponseEntity<>(
-                new ResponseBinaryTreeDto(binaryTree.listPlayers(which),"Exitoso",
+                new ResponseBinaryTreeDto(binaryTree.listPlayers(which),"Acción exitosa",
                         null),HttpStatus.OK);
     }
 
@@ -38,15 +38,45 @@ public class BinaryTreeService
     public ResponseEntity<ResponseBinaryTreeDto> counterEqualNum(BinaryNode node, int number) throws BinaryTreeException
     {
         return new ResponseEntity<>(
-                new ResponseBinaryTreeDto(binaryTree.counterEqualNum(node,number),"Exitoso",
+                new ResponseBinaryTreeDto(binaryTree.counterEqualNum(node,number),"Acción exitosa",
                         null),HttpStatus.OK);
     }
 
     public ResponseEntity<ResponseBinaryTreeDto> listGetLeafs() throws BinaryTreeException
     {
         return new ResponseEntity<>(
-                new ResponseBinaryTreeDto(binaryTree.getLeafs(),"Exitoso",
+                new ResponseBinaryTreeDto(binaryTree.getLeafs(),"Acción exitosa",
                         null),HttpStatus.OK);
 
+    }
+
+    public ResponseEntity<ResponseBinaryTreeDto> createTournament(int totalPlayers) throws BinaryTreeException
+    {
+        binaryTree.setRoot(null);
+        binaryTree.setCount(0);
+        int variant=totalPlayers*2;
+        totalPlayers= totalPlayers +(totalPlayers-1);
+        int level=1;
+        int start= variant/2;
+        int i=1;
+        while(i < totalPlayers)
+        {
+            int totalHorizontal = (int) Math.pow(2,(level-1));
+            int ind = start;
+            for(int j=0;j<totalHorizontal;j++)
+            {
+                binaryTree.addPlayer(new Player(ind,"Player " +j,true));
+                ind= ind + variant;
+                i++;
+            }
+            variant= variant/2;
+            start=start/2;
+            level++;
+        }
+
+        return new ResponseEntity<ResponseBinaryTreeDto>(
+                new ResponseBinaryTreeDto(binaryTree.getRoot(),"Success", null)
+                ,HttpStatus.OK
+        );
     }
 }
