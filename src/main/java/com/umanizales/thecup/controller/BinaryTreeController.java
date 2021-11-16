@@ -15,6 +15,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping(path = "binarytree")
 @Validated
+@CrossOrigin("http://localhost:4200")
 public class BinaryTreeController
 {
     @Autowired
