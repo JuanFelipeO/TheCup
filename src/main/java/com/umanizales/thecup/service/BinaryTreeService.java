@@ -83,7 +83,7 @@ public class BinaryTreeService
     public ResponseEntity<ResponseBinaryTreeDto> loginPlayer(Player data, int identification) throws BinaryTreeException
     {
         binaryTree.loginPlayer(data,identification);
-        return new ResponseEntity<>(new ResponseBinaryTreeDto(data,"El jugador se creo correctamente",
+        return new ResponseEntity<>(new ResponseBinaryTreeDto(data,"Se añadio correctamente el jugador al torneo",
                 null), HttpStatus.OK);
     }
 }
