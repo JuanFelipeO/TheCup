@@ -1,5 +1,6 @@
 package com.umanizales.thecup.controller;
 
+import com.umanizales.thecup.aplication.dto.ResponseBinaryTreeDto;
 import com.umanizales.thecup.exception.BinaryTreeException;
 import com.umanizales.thecup.model.BinaryNode;
 import com.umanizales.thecup.model.Player;
@@ -74,5 +75,12 @@ public class BinaryTreeController
     public @ResponseBody
     ResponseEntity<?> createTournament(@PathVariable int totalPlayers) throws BinaryTreeException {
         return binaryTreeService.createTournament(totalPlayers);
+    }
+
+    @PostMapping("/loginplayer/{identifiaction}")
+    public @ResponseBody
+    ResponseEntity<?> loginplayer(@Validated @RequestBody Player data, @PathVariable int identifiaction) throws BinaryTreeException
+    {
+        return binaryTreeService.loginPlayer(data,identifiaction);
     }
 }

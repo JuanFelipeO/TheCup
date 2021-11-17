@@ -67,4 +67,15 @@ public class BinaryTree
             throw new BinaryTreeException("El árbol esta vacio");
         }
     }
+
+    public void loginPlayer(Player data, int identification) throws BinaryTreeException
+    {
+        if(root.getData().getIdPlayer() == identification)
+        {
+            root.setData(data);
+        }
+        else {
+            root.loginPlayer(data, identification);
+        }
+    }
 }

@@ -22,7 +22,7 @@ public class EnearyTreeService
                         null), HttpStatus.OK);
     }
 
-    public ResponseEntity<ResponseBinaryTreeDto> listBoys() throws DataNotFoundException
+    public ResponseEntity<ResponseBinaryTreeDto> listBoys()
     {
         return new ResponseEntity<ResponseBinaryTreeDto>(
                 new ResponseBinaryTreeDto(nTree.getRoot(),"Success", null)

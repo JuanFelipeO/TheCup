@@ -65,7 +65,7 @@ public class BinaryTreeService
             int ind = start;
             for(int j=0;j<totalHorizontal;j++)
             {
-                binaryTree.addPlayer(new Player(ind,"Player " +j,true));
+                binaryTree.addPlayer(new Player(ind,"Player",true));
                 ind= ind + variant;
                 i++;
             }
@@ -78,5 +78,12 @@ public class BinaryTreeService
                 new ResponseBinaryTreeDto(binaryTree.getRoot(),"Success", null)
                 ,HttpStatus.OK
         );
+    }
+
+    public ResponseEntity<ResponseBinaryTreeDto> loginPlayer(Player data, int identification) throws BinaryTreeException
+    {
+        binaryTree.loginPlayer(data,identification);
+        return new ResponseEntity<>(new ResponseBinaryTreeDto(data,"El jugador se creo correctamente",
+                null), HttpStatus.OK);
     }
 }

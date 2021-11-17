@@ -144,4 +144,34 @@ public class BinaryNode
         }
         return getLeafs;
     }
+
+    public void loginPlayer(Player data, int identification) throws BinaryTreeException
+    {
+        if(data.getIdPlayer() < identification)
+        {
+            if(this.getLeft()==null)
+            {
+                throw new BinaryTreeException("No se encontró la identificación administrada");
+            }
+            else
+            {
+                this.left.setData(data);
+            }
+        }
+        else if (data.getIdPlayer() > identification)
+        {
+            if(this.getRight()==null)
+            {
+                throw new BinaryTreeException("No se encontró la identificación administrada");
+            }
+            else
+            {
+                this.right.setData(data);
+            }
+        }
+        else
+        {
+            throw new BinaryTreeException("Ya existe un jugador con esa identificación");
+        }
+    }
 }
