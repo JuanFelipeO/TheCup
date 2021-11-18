@@ -151,7 +151,7 @@ public class BinaryNode
         {
             if(this.getLeft()==null)
             {
-                throw new BinaryTreeException("No se encontró la identificación administrada");
+                this.setLeft(new BinaryNode(data));
             }
             else
             {
@@ -162,7 +162,7 @@ public class BinaryNode
         {
             if(this.getRight()==null)
             {
-                throw new BinaryTreeException("No se encontró la identificación administrada");
+                this.setRight(new BinaryNode(data));
             }
             else
             {

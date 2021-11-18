@@ -1,5 +1,6 @@
 package com.umanizales.thecup.model;
 
+import com.umanizales.thecup.exception.BinaryTreeException;
 import com.umanizales.thecup.exception.DataNotFoundException;
 import com.umanizales.thecup.exception.EnearyTreeException;
 import lombok.Data;
@@ -11,7 +12,7 @@ public class EnearyTree {
     private EnearyNode root;
     private int count;
 
-    public void add(Player child, int parentIdentification) throws EnearyTreeException, DataNotFoundException {
+    public void add(Player child, int parentIdentification) throws EnearyTreeException, DataNotFoundException, BinaryTreeException {
         if (root == null) {
             root = new EnearyNode(child);
         } else {
@@ -32,5 +33,14 @@ public class EnearyTree {
     public void validateNtreeEmpty() throws EnearyTreeException {
         if (this.root == null)
             throw new EnearyTreeException("El árbol eneario está vacío");
+    }
+
+    public int calculateDiscount(int id) throws DataNotFoundException, BinaryTreeException
+    {
+        if(this.root == null)
+        {
+            throw new DataNotFoundException("No se cuenta con datos en el árbol");
+        }
+        return this.root.calculateDiscount(root.findEnearyTreeByIdentification(id));
     }
 }
